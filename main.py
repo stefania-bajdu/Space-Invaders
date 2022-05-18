@@ -43,7 +43,8 @@ for i in range(0, no_of_invaders):
 # 1 - glontul se misca
 bulletImage = pygame.image.load('data/bullet.png')
 bullet_pos = [0, 500]
-bullet_speed = [0, 3]
+bullet_speed = [0, 3 * 5]
+print(bullet_speed)
 bullet_state = 0
 
 
@@ -96,9 +97,9 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    player_speed[0] = -1.7
+                    player_speed[0] = -1.7 * 5
                 if event.key == pygame.K_RIGHT:
-                    player_speed[0] = 1.7
+                    player_speed[0] = 1.7 * 5
                 if event.key == pygame.K_SPACE:
                     if bullet_state == 0:
                         bullet_pos[0] = player_pos[0]
@@ -110,15 +111,15 @@ class Game:
                 pygame.quit()
                 sys.exit()
 
-        player_pos[0] += player_speed[0]
+        player_pos[0] += player_speed[0] * 5
         for i in range(0, no_of_invaders):
-            invader_pos[i][0] += invader_speed[i][0]
+            invader_pos[i][0] += invader_speed[i][0] * 5
         if bullet_pos[1] <= 0:
             bullet_pos[1] = 600
             bullet_state = 0
         if bullet_state == 1:
             bullet(self.window, bullet_pos)
-            bullet_pos[1] -= bullet_speed[1]
+            bullet_pos[1] -= bullet_speed[1] * 5
 
         for i in range(0, no_of_invaders):
             if invader_pos[i][1] >= 450:
@@ -131,7 +132,7 @@ class Game:
             # invaderul sa nu iasa din fereastra ci sa se miste in jos
             if invader_pos[i][0] >= 735 or invader_pos[i][0] <= 0:
                 invader_speed[i][0] *= -1
-                invader_pos[i][1] += invader_speed[i][1]
+                invader_pos[i][1] += invader_speed[i][1] * 5
 
             collision = isCollision(bullet_pos, invader_pos[i])
             if collision:
