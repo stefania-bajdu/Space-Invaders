@@ -15,7 +15,7 @@ BLACK = (0, 0, 0)
 SCORE_VAL = 0
 SCORE_POS = [5, 5]
 
-# frame_rate = pygame.time.Clock()
+frame_rate = pygame.time.Clock()
 
 font = pygame.font.Font('freesansbold.ttf', 20)
 game_over_font = pygame.font.Font('freesansbold.ttf', 64)
@@ -100,7 +100,7 @@ class Game:
                 if event.key == pygame.K_RIGHT:
                     player_speed[0] = 1.7
                 if event.key == pygame.K_SPACE:
-                    if bullet_state is 0:
+                    if bullet_state == 0:
                         bullet_pos[0] = player_pos[0]
                         bullet(self.window, bullet_pos)
             if event.type == pygame.KEYUP:
@@ -154,6 +154,8 @@ class Game:
         show_score(self.window, SCORE_POS)
 
         pygame.display.update()
+
+        frame_rate.tick(60)
 
 
 def main():
