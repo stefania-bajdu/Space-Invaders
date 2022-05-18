@@ -35,18 +35,16 @@ no_of_invaders = 8
 
 for i in range(0, no_of_invaders):
     invaderImage.append(invader_picture)
-    invader_pos.append([random.randint(64, 737), random.randint(30, 180)])
-    invader_speed.append([0.5, 20])
+    invader_pos.append([random.randint(30, 737), random.randint(10, 180)])
+    invader_speed.append([2.5, 20])
 
 # Glont
 # 0 - glontul nu se misca (nu este pe ecran)
 # 1 - glontul se misca
 bulletImage = pygame.image.load('data/bullet.png')
 bullet_pos = [0, 500]
-bullet_speed = [0, 3 * 5]
-print(bullet_speed)
+bullet_speed = [0, 15]
 bullet_state = 0
-
 
 # pos_in = pozitiile pe OX si OY ale primului obiect
 # pos_out = pozitiile pe OX si OY ale celui de al doilea obiect
@@ -111,15 +109,15 @@ class Game:
                 pygame.quit()
                 sys.exit()
 
-        player_pos[0] += player_speed[0] * 5
+        player_pos[0] += player_speed[0] 
         for i in range(0, no_of_invaders):
-            invader_pos[i][0] += invader_speed[i][0] * 5
+            invader_pos[i][0] += invader_speed[i][0] 
         if bullet_pos[1] <= 0:
             bullet_pos[1] = 600
             bullet_state = 0
         if bullet_state == 1:
             bullet(self.window, bullet_pos)
-            bullet_pos[1] -= bullet_speed[1] * 5
+            bullet_pos[1] -= bullet_speed[1] 
 
         for i in range(0, no_of_invaders):
             if invader_pos[i][1] >= 450:
@@ -132,7 +130,7 @@ class Game:
             # invaderul sa nu iasa din fereastra ci sa se miste in jos
             if invader_pos[i][0] >= 735 or invader_pos[i][0] <= 0:
                 invader_speed[i][0] *= -1
-                invader_pos[i][1] += invader_speed[i][1] * 5
+                invader_pos[i][1] += invader_speed[i][1] 
 
             collision = isCollision(bullet_pos, invader_pos[i])
             if collision:
@@ -156,7 +154,7 @@ class Game:
 
         pygame.display.update()
 
-        frame_rate.tick(60)
+        frame_rate.tick(90)
 
 
 def main():
