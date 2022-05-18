@@ -3,7 +3,7 @@ import sys
 import random
 import math
 from pygame.locals import *
-
+#LIVIAN a fost aici
 pygame.init()
 
 W_WIDTH = 800
