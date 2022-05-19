@@ -162,5 +162,4 @@ def main():
     while True:
         battle.run()
 
-
 main()
